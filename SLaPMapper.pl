@@ -750,7 +750,7 @@ sub SlurpFasta	{
 				while (<FILE>)
 					{
 					my $l = $_;
-					if ($l =~ m/>(.+)\n/)
+					if ($l =~ m/^>(\S+)/)
 						{
 						$next = $1;
 						if ($i == 0)
