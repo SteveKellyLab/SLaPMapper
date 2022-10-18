@@ -280,7 +280,7 @@ sub read_splice_sam_file	{
 									my $ml = $1;
 									if (($ml == $len)&&($mapq > 0))
 										{
-										if ($t[1] == 0)
+										if (!($t[1] & 16))
 											{									
 											my $s2 = substr ($seqs{$t[2]}, $t[3] - 1 - $alen, $alen);	
 											my $s3 = substr ($seqs{$t[2]}, $t[3] - 3, 2);							
@@ -750,7 +750,7 @@ sub SlurpFasta	{
 				while (<FILE>)
 					{
 					my $l = $_;
-					if ($l =~ m/>(.+)\n/)
+					if ($l =~ m/^>(\S+)/)
 						{
 						$next = $1;
 						if ($i == 0)
